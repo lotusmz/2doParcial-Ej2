@@ -30,7 +30,17 @@ public class UI {
 	
 	private static void encriptionMenu(int option) throws Exception {
 		if (option == 1){ 
-			//Details of asymetric encription
+			int option1 = 0;
+			do {
+	    		System.out.println("1.Create key");
+	        	System.out.println("2.Encript Message");
+	        	System.out.println("3.Decrypt Message");
+	        	System.out.println("4.Exit ");
+	        	option1 = Integer.parseInt(br.readLine());
+	        	if (option1 >= 1 && option1 <= 3){
+	        		asymetricEncription(option1);
+	        	}
+	    	} while (option1 != 4);	
 		}
 		if (option == 2){
 			int option2 = 0;
@@ -49,6 +59,30 @@ public class UI {
 			//new type of encription not defined			
 		}
 	}
+
+	private static void asymetricEncription(int pOption1) throws Exception {
+		if (pOption1 == 1){ 
+			System.out.println("Key name: ");
+			String name = br.readLine();
+			asymetricManager.createKey(name);
+		}
+		if (pOption1 == 2){
+			System.out.println("Key name: ");
+			String name = br.readLine();
+			System.out.println("Message name: ");
+			String messageName = br.readLine();
+			System.out.println("Message: ");
+			String message = br.readLine();
+			asymetricManager.encryptMessage(messageName,message,name);		
+		}
+		if (pOption1 == 3){
+			System.out.println("Key name: ");
+			String keyName = br.readLine();
+			System.out.println("Message name: ");
+			String messageName = br.readLine();
+			asymetricManager.decryptMessage(messageName, keyName);			
+		}
+	}	
 	
 	private static void symetricEncription(int pOption2) throws Exception {
 		if (pOption2 == 1){ 
@@ -73,5 +107,7 @@ public class UI {
 			symetricManager.decryptMessage(messageName, keyName);			
 		}
 	}
+	
+
 
 }

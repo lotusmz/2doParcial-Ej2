@@ -46,7 +46,7 @@ public class SymetricManager {
 		writeBytesFile(messageName,encryptedData,MESSAGE_ENCRYPT_EXTENSION);
 	}
 	
-	public void decryptMessage(String messageName, String keyName, int pEncType) throws Exception {
+	public String decryptMessage(String messageName, String keyName, int pEncType) throws Exception {
 		byte[] key = readKeyFile(keyName);
 		byte[] encryptedMessage = readMessageFile(messageName);
 		System.out.println(encryptedMessage.length);
@@ -61,9 +61,7 @@ public class SymetricManager {
 		}
 		cipher.init(Cipher.DECRYPT_MODE, k);
 		byte[] DecryptedData = cipher.doFinal(encryptedMessage);
-		String message = new String(DecryptedData, StandardCharsets.UTF_8);
-		System.out.println("El mensaje era: ");
-		System.out.println(message);
+		return new String(DecryptedData, StandardCharsets.UTF_8);
 	}
 	
 	

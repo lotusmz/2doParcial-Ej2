@@ -16,10 +16,10 @@ public class UI {
 		
 		int encType = 0;
 		do {
-    		System.out.println("Choose the encription method");
-        	System.out.println("1.RSA-Asymetric");
-        	System.out.println("2.AES-Symetric");
-        	System.out.println("3.Blowfish-Symetric");
+    		System.out.println("Choose the encription algorithm");
+        	System.out.println("1.RSA");
+        	System.out.println("2.AES");
+        	System.out.println("3.Blowfish");
         	System.out.println("4.Exit ");
         	encType = Integer.parseInt(br.readLine());
         	if (encType >= 1 && encType <= 3){

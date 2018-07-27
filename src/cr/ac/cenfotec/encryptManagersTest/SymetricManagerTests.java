@@ -13,8 +13,11 @@ public class SymetricManagerTests {
 	private String message = "Asymetric encription test";
 	
 	@Test
-	public void testAesEncription() {
-		fail("Not yet implemented");
+	public void testAesEncription() throws Exception {
+		symetricManager.createKey(keyName);
+		symetricManager.encryptMessage(messageName, message, keyName, 2);
+		
+		assertEquals(message, symetricManager.decryptMessage(messageName, keyName, 2));
 	}
 
 }

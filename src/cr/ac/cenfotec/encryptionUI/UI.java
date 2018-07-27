@@ -17,8 +17,8 @@ public class UI {
 		int option = 0;
 		do {
     		System.out.println("Choose the encription method");
-        	System.out.println("1.Asymetric Encription");
-        	System.out.println("2.Symetric Encription");
+        	System.out.println("1.Asymetric");
+        	System.out.println("2.Symetric");
         	System.out.println("3.Exit ");
         	option = Integer.parseInt(br.readLine());
         	if (option >= 1 && option <= 2){
@@ -29,35 +29,19 @@ public class UI {
 	}
 	
 	private static void encriptionMenu(int option) throws Exception {
-		if (option == 1){ 
-			int option1 = 0;
-			do {
-	    		System.out.println("1.Create key");
-	        	System.out.println("2.Encript Message");
-	        	System.out.println("3.Decrypt Message");
-	        	System.out.println("4.Exit ");
-	        	option1 = Integer.parseInt(br.readLine());
-	        	if (option1 >= 1 && option1 <= 3){
-	        		asymetricEncription(option1);
-	        	}
-	    	} while (option1 != 4);	
-		}
-		if (option == 2){
-			int option2 = 0;
-			do {
-	    		System.out.println("1.Create key");
-	        	System.out.println("2.Encript Message");
-	        	System.out.println("3.Decrypt Message");
-	        	System.out.println("4.Exit ");
-	        	option2 = Integer.parseInt(br.readLine());
-	        	if (option2 >= 1 && option2 <= 3){
-	        		symetricEncription(option2);
-	        	}
-	    	} while (option2 != 4);		
-		}
-		if (option == 3){
-			//new type of encription not defined			
-		}
+		
+		int option1 = 0;
+		do {
+    		System.out.println("1.Create key");
+        	System.out.println("2.Encript Message");
+        	System.out.println("3.Decrypt Message");
+        	System.out.println("4.Exit ");
+        	option1 = Integer.parseInt(br.readLine());
+        	if (option1 >= 1 && option1 <= 3){
+        		asymetricEncription(option1);
+        	}
+    	} while (option1 != 4);	
+	
 	}
 
 	private static void asymetricEncription(int pOption1) throws Exception {

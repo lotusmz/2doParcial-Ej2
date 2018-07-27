@@ -78,7 +78,7 @@ public class UI {
 			System.out.println("Message name: ");
 			String messageName = br.readLine();
 			if(pEncType == 1) {
-				asymetricManager.decryptMessage(messageName, keyName);
+				System.out.println("El mensaje era: " + asymetricManager.decryptMessage(messageName, keyName));
 			}else if(pEncType == 2 || pEncType == 3) {
 				symetricManager.decryptMessage(messageName, keyName,pEncType);
 			}

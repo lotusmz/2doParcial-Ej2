@@ -80,7 +80,7 @@ public class UI {
 			if(pEncType == 1) {
 				System.out.println("El mensaje era: " + asymetricManager.decryptMessage(messageName, keyName));
 			}else if(pEncType == 2 || pEncType == 3) {
-				symetricManager.decryptMessage(messageName, keyName,pEncType);
+				System.out.println("El mensaje era: " + symetricManager.decryptMessage(messageName, keyName,pEncType));				
 			}
 						
 		}

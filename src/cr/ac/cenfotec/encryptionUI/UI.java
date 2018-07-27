@@ -17,11 +17,12 @@ public class UI {
 		int encType = 0;
 		do {
     		System.out.println("Choose the encription method");
-        	System.out.println("1.Asymetric");
-        	System.out.println("2.Symetric");
-        	System.out.println("3.Exit ");
+        	System.out.println("1.RSA-Asymetric");
+        	System.out.println("2.AES-Symetric");
+        	System.out.println("3.Blowfish-Symetric");
+        	System.out.println("4.Exit ");
         	encType = Integer.parseInt(br.readLine());
-        	if (encType >= 1 && encType <= 2){
+        	if (encType >= 1 && encType <= 3){
         		encriptionMenu(encType);
         	}
     	} while (encType != 3);
@@ -51,7 +52,7 @@ public class UI {
 			
 			if(pEncType == 1) {
 				asymetricManager.createKey(name);
-			}else if(pEncType == 2) {
+			}else if(pEncType == 2 || pEncType == 3) {
 				symetricManager.createKey(name);
 			}
 			
@@ -66,8 +67,8 @@ public class UI {
 			
 			if(pEncType == 1) {
 				asymetricManager.encryptMessage(messageName,message,name);
-			}else if(pEncType == 2) {
-				symetricManager.encryptMessage(messageName,message,name);
+			}else if(pEncType == 2 || pEncType == 3) {
+				symetricManager.encryptMessage(messageName,message,name,pEncType);
 			}
 					
 		}
@@ -78,8 +79,8 @@ public class UI {
 			String messageName = br.readLine();
 			if(pEncType == 1) {
 				asymetricManager.decryptMessage(messageName, keyName);
-			}else if(pEncType == 2) {
-				symetricManager.decryptMessage(messageName, keyName);
+			}else if(pEncType == 2 || pEncType == 3) {
+				symetricManager.decryptMessage(messageName, keyName,pEncType);
 			}
 						
 		}

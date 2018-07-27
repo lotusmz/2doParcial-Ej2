@@ -27,10 +27,18 @@ public class SymetricManager {
 		writeBytesFile(name,key,KEY_EXTENSION);
 	}
 
-	public void encryptMessage(String messageName, String message, String keyName) throws Exception {
+	public void encryptMessage(String messageName, String message, String keyName, int pEncType) throws Exception {
 		byte[] key = readKeyFile(keyName);
-		Cipher cipher = Cipher.getInstance("AES");
-		SecretKeySpec k = new SecretKeySpec(key,"AES");
+		Cipher cipher = null;
+		SecretKeySpec k = null;
+		if(pEncType == 2) {
+			cipher = Cipher.getInstance("AES");
+			k = new SecretKeySpec(key,"AES");
+		}else if(pEncType == 3) {
+			cipher = Cipher.getInstance("Blowfish");
+			k = new SecretKeySpec(key,"Blowfish");
+		}
+
 		cipher.init(Cipher.ENCRYPT_MODE, k);
 		byte[] encryptedData = cipher.doFinal(message.getBytes(StandardCharsets.UTF_8));
 	    Encoder oneEncoder = Base64.getEncoder();
@@ -38,12 +46,19 @@ public class SymetricManager {
 		writeBytesFile(messageName,encryptedData,MESSAGE_ENCRYPT_EXTENSION);
 	}
 	
-	public void decryptMessage(String messageName, String keyName) throws Exception {
+	public void decryptMessage(String messageName, String keyName, int pEncType) throws Exception {
 		byte[] key = readKeyFile(keyName);
 		byte[] encryptedMessage = readMessageFile(messageName);
 		System.out.println(encryptedMessage.length);
-		Cipher cipher = Cipher.getInstance("AES");
-		SecretKeySpec k = new SecretKeySpec(key,"AES");
+		Cipher cipher = null;
+		SecretKeySpec k = null;
+		if(pEncType == 2) {
+			cipher = Cipher.getInstance("AES");
+			k = new SecretKeySpec(key,"AES");
+		}else if(pEncType == 3) {
+			cipher = Cipher.getInstance("Blowfish");
+			k = new SecretKeySpec(key,"Blowfish");
+		}
 		cipher.init(Cipher.DECRYPT_MODE, k);
 		byte[] DecryptedData = cipher.doFinal(encryptedMessage);
 		String message = new String(DecryptedData, StandardCharsets.UTF_8);

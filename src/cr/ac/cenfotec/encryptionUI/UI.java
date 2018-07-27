@@ -39,7 +39,7 @@ public class UI {
 	        	System.out.println("2.Encript Message");
 	        	System.out.println("3.Decrypt Message");
 	        	System.out.println("4.Exit ");
-	        	option = Integer.parseInt(br.readLine());
+	        	option2 = Integer.parseInt(br.readLine());
 	        	if (option2 >= 1 && option2 <= 3){
 	        		symetricEncription(option2);
 	        	}
@@ -50,13 +50,13 @@ public class UI {
 		}
 	}
 	
-	private static void symetricEncription(int option) throws Exception {
-		if (option == 1){ 
+	private static void symetricEncription(int pOption2) throws Exception {
+		if (pOption2 == 1){ 
 			System.out.println("Key name: ");
 			String name = br.readLine();
 			symetricManager.createKey(name);
 		}
-		if (option == 2){
+		if (pOption2 == 2){
 			System.out.println("Key name: ");
 			String name = br.readLine();
 			System.out.println("Message name: ");
@@ -65,7 +65,7 @@ public class UI {
 			String message = br.readLine();
 			symetricManager.encryptMessage(messageName,message,name);		
 		}
-		if (option == 3){
+		if (pOption2 == 3){
 			System.out.println("Key name: ");
 			String keyName = br.readLine();
 			System.out.println("Message name: ");
